@@ -2,7 +2,6 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 import dotenv from "dotenv";
 dotenv.config();
 import Roadmap from '../models/roadmapmodel.js';
-import toast from 'react-hot-toast';
 
 const functionDefinition = {
   name: "generateRoadmap",
@@ -53,7 +52,6 @@ export const generateRoadmap = async (req, res) => {
     const response = result.response;
     const data = response.candidates?.[0]?.content?.parts?.[0]?.functionCall?.args;
     console.log(data);
-    toast.success('Roadmap generated successfully');
 
     if (data && data.title && Array.isArray(data.phases)) {
       // Save to DB
@@ -61,7 +59,7 @@ export const generateRoadmap = async (req, res) => {
       await roadmap.save();
       // Return the saved roadmap, which includes the _id
       res.json(roadmap);
-      console.log('Generated Roadmap:', roadmap.title, roadmap);
+      // console.log('Generated Roadmap:', roadmap.title, roadmap);
     } else {
       res.status(500).json({ error: 'AI did not return expected roadmap structure.' });
     }
@@ -69,4 +67,3 @@ export const generateRoadmap = async (req, res) => {
     res.status(500).json({ error: 'AI failed to generate roadmap', detail: err.message });
   }
 };
-

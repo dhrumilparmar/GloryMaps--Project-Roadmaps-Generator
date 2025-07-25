@@ -10,17 +10,7 @@ const nodeTypes = {
 };
 
 const handleSubmit = () =>{
-   const connectdb = async () =>{
-      try {
-          await mongoose.connect("mongodb+srv://dhrumilparmar27481:CNJSYVXZXW49cCZZ@clusterglorymaps.rykkx29.mongodb.net/?retryWrites=true&w=majority&appName=ClusterGlorymaps");
-          console.log("MongoDB connected successfully");
-          roadmap.save()
-      }
-      catch(error) {
-          console.error("Error connecting to MongoDB:", error.message);
-          process.exit(1); // Exit the process with failure
-      }
-  }
+  console.log("handleSubmit called");
 }
 const MapResult = () => {
   const location = useLocation();
