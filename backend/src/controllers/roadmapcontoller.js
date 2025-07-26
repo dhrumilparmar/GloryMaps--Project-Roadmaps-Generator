@@ -51,7 +51,6 @@ export const generateRoadmap = async (req, res) => {
     });
     // console.log('AI Response:', result);
     const response = result.response;
-    toast.success(' Roadmap Generated ');
     const data = response.candidates?.[0]?.content?.parts?.[0]?.functionCall?.args;
     // console.log(data);
 
