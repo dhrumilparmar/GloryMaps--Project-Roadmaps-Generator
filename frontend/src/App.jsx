@@ -2,6 +2,7 @@ import React from 'react'
 import Home from './Pages/Home'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import MapResult from './Pages/MapResult'
+import { Toaster } from 'react-hot-toast';
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
           <Route path="/map-result" element={<MapResult />} />
         </Routes>
       </Router>
+      <Toaster position="top-center" />
     </div>
   )
 }

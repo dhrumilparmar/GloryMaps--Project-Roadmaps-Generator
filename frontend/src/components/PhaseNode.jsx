@@ -11,7 +11,7 @@ const PhaseNode = ({ data }) => {
           {data.steps.map((step, index) => (
             <li key={index}>{step}</li>
           ))}
-        </ul> bn
+        </ul>
         {data.suggestion && (
           <p className="text-gray-300 italic mt-3">
             <span className="font-semibold text-purple-300">Suggestion:</span> {data.suggestion}

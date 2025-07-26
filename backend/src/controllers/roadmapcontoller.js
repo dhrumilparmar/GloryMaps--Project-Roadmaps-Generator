@@ -2,6 +2,7 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 import dotenv from "dotenv";
 dotenv.config();
 import Roadmap from '../models/roadmapmodel.js';
+import toast from 'react-hot-toast';
 
 const functionDefinition = {
   name: "generateRoadmap",
@@ -48,10 +49,11 @@ export const generateRoadmap = async (req, res) => {
       }],
       tools: [{ functionDeclarations: [functionDefinition] }]
     });
-    console.log('AI Response:', result);
+    // console.log('AI Response:', result);
     const response = result.response;
+    toast.success(' Roadmap Generated ');
     const data = response.candidates?.[0]?.content?.parts?.[0]?.functionCall?.args;
-    console.log(data);
+    // console.log(data);
 
     if (data && data.title && Array.isArray(data.phases)) {
       // Save to DB

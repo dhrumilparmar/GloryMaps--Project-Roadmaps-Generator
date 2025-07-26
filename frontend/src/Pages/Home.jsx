@@ -23,6 +23,7 @@ const Home = () => {
 
       // Axios automatically throws for HTTP errors, so no need for response.ok
       const roadmapData = response.data;
+      toast.success('Roadmap generated successfully!');
       // Navigate to the result page, passing the data via state
       navigate('/map-result', { state: { roadmap: roadmapData } });
 
