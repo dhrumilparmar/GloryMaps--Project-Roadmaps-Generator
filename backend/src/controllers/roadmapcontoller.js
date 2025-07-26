@@ -2,7 +2,6 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 import dotenv from "dotenv";
 dotenv.config();
 import Roadmap from '../models/roadmapmodel.js';
-import toast from 'react-hot-toast';
 
 const functionDefinition = {
   name: "generateRoadmap",
