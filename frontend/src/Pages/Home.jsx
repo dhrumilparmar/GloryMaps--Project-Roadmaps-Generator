@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../lib/axois';
 import { Infinity } from 'ldrs/react';
-import 'ldrs/react/infinity.css';
 import toast from 'react-hot-toast';
 
 
