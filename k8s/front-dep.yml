@@ -1,0 +1,23 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: front-dep
+  namespace: mern-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+
+  template:
+    metadata:
+      name: frontend-dep-pod
+      labels:
+        app: frontend
+
+    spec:
+      containers:
+      - name: frontend
+        image: nukeleus/glorymaps_frontend
+        ports:
+        - containerPort: 5173

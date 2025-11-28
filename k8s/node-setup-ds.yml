@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: node-inotify-setup
+  namespace: kube-system # It's common to run node-level things in kube-system
+  labels:
+    app: node-inotify-setup
+spec:
+  selector:
+    matchLabels:
+      app: node-inotify-setup
+  template:
+    metadata:
+      labels:
+        app: node-inotify-setup
+    spec:
+      hostPID: true # Needed for the sysctl command to affect the host kernel
+      containers:
+      - name: inotify-fix
+        image: busybox
+        command:
+        - sh
+        - -c
+        - "sysctl -w fs.inotify.max_user_watches=524288 && while true; do sleep 86400; done"
+        securityContext:
+          privileged: true

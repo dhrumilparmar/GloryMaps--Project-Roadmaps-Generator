@@ -1,0 +1,15 @@
+# config.yml
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+  - role: control-plane
+    extraPortMappings:
+      - containerPort: 30000   # Map host port 30000 -> cluster NodePort (frontend)
+        hostPort: 30000
+        protocol: TCP
+      - containerPort: 30001   # Map host port 30001 -> backend if needed
+        hostPort: 30001
+        protocol: TCP
+  - role: worker
+  - role: worker
+
